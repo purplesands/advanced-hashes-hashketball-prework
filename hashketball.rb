@@ -136,30 +136,13 @@ end
 
 
 def num_points_scored(name)
-  game_hash.each do |team_side, team_info|
-    team_info.each do |key, info|
-      if key == :players
-        info.each do |player_name, stat|
-          if player_name == name
-            return stat[:points]
-          end
-        end
-      end
-    end
-  end
+    game_hash.each do |location, team_data|
+    team_data[:players].each do |names, data|
+    if names == name
+    return data[:points]
+end
+end
+end
 end
 
-def shoe_size(name)
-  game_hash.each do |team_side, team_info|
-    team_info.each do |key, info|
-      if key == :players
-        info.each do |player_name, stat|
-          if player_name == name
-            return stat[:shoe_size]
-          end
-        end
-      end
-    end
-  end
-end
 
