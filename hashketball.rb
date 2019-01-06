@@ -139,4 +139,63 @@ game_hash.each do |location, team_stats|
 end
 
 
+def team_colors(team_name)
+  game_hash.each do |location, team_stats|
+    team_stats.each do |stats, keys|
+      if keys == team_name
+      return team_stats[:colors]
+      end
+    end
+  end
+end
+
+
+def team_names
+  game_hash.map do |location, team_stats|
+  team_stats[:team_name]
+  end
+end
+
+
+def player_numbers(team)
+  if game_hash[:home][:team_name]== team
+    game_hash[:home][:players].map do |name, stats|
+    stats[:number]
+    end
+  elsif game_hash[:away][:team_name]== team
+    game_hash[:away][:players].map do |name, stats|
+    stats[:number]
+    end
+  end
+end
+
+def player_stats(name)
+  player_stats = nil 
+  game_hash.each do |home_away, team_info|
+    team_info.each do |data_label, data|
+      if data_label == :players
+        data.each do |player_name, stats|
+          if player_name == name
+            player_stats = stats
+          end
+        end
+      end
+    end
+  end
+  player_stats
+end
+
+
+def big_shoe_rebounds
+  max_player = nil
+  game_hash.each do |home_away, team_info|
+    team_info[:players].each do |player, player_hash|
+    puts player_hash[:shoe]
+      max_player ||= player_hash
+      max_player = player_hash if player_hash[:shoe] > max_player[:shoe]
+    end
+  end
+
+  max_player[:rebounds]
+end
 
