@@ -136,6 +136,8 @@ end
 
 good_practices
 
+def num_points_scored(name)
+
 
 
 
