@@ -195,7 +195,6 @@ def big_shoe_rebounds
       max_player = player_hash if player_hash[:shoe] > max_player[:shoe]
     end
   end
-
   max_player[:rebounds]
 end
 
