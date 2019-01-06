@@ -155,7 +155,7 @@ def shoe_size(name)
       if key == :players
         info.each do |player_name, stat|
           if player_name == name
-            return stat[:points]
+            return stat[:shoe_size]
           end
         end
       end
